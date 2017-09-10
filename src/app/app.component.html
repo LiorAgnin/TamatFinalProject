@@ -1,0 +1,34 @@
+<main id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
+          </button>
+          <a class="navbar-brand" routerLink="/home">Home</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a *ngIf="!auth.isAuthenticated()" (click)="auth.login()">Log In</a></li>
+            <li><a *ngIf="auth.isAuthenticated()" (click)="auth.logout()">Log Out</a></li>
+            <li><a class="navbar-brand" routerLink="/order">ORDERS</a></li>
+            <li><a class="navbar-brand" routerLink="/products">INVENTORY</a></li>
+            <li><a class="navbar-brand" routerLink="/contact">CONTACT</a></li>
+            <li><a class="navbar-brand" routerLink="/profile">PROFILE</a></li>
+            <app-shop-bag ></app-shop-bag>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <div class="jumbotron text-center">
+      <h1>Walcome to<br/> Vagee 4 U </h1> 
+      <h1>We Specialize In Vegetables</h1> 
+    </div>
+</main>
+
+<div class="container">
+    <router-outlet></router-outlet>
+</div>

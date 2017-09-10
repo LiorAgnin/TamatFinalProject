@@ -1,0 +1,166 @@
+<body  data-spy="scroll" data-target=".navbar" data-offset="60">
+<p>
+  orders works!
+</p>
+<button class="btn btn-primary" (click)="get()">print to console</button>
+<button class="btn btn-primary" (click)="booli=!booli">Show History</button>
+<div class="container" *ngIf="!booli">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>UserId</th>
+                <th>Order_Date</th>
+                <th>ProductId</th>
+                <th>Status</th>         
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of arOrders;">
+                <td>{{item.Id}}</td>
+                <td>{{item.UserId}}</td>
+                <td>{{item.Order_Date}}</td>
+                <td>{{item.ProductId}}</td>
+                <th>Status</th>                
+                <td><span class="glyphicon glyphicon-edit" (click)="editForm(item)"></span></td>
+                <td><span class="glyphicon glyphicon-remove" (click)="deleteCustomer(item.Id)"></span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="container" *ngIf="booli">
+  <h1>Orders History</h1>
+  <table class="table">
+      <thead>
+          <tr>
+              <th>#</th>
+              <th>UserId</th>
+              <th>Order_Date</th>
+              <th>ProductId</th>       
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let item of arOrders;">
+              <td>{{item.Id}}</td>
+              <td>{{item.UserId}}</td>
+              <td>{{item.Order_Date}}</td>
+              <td>{{item.ProductId}}</td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+<button class="btn btn-primary" (click)="booliCreate=!booliCreate">New Order</button>
+
+<div class="container" *ngIf="booli">
+    <form #trvFormEdit="ngForm" (ngSubmit)="editSubmit()">
+        <fieldset>
+            <legend>Please fill in the field in order to register</legend>
+        </fieldset>
+        <div class="form-group">
+            <label for="Name">Name</label>
+            <input id="Name" type="text" class="form-control" required [(ngModel)]="CustomerToEdit.Name" name="Name">
+        </div>
+        <div class="form-group">
+            <label for="SubscriptionType">Subscription Type<span class="required">*</span></label>
+            <input id="SubscriptionType" type="text" class="form-control" required [(ngModel)]="CustomerToEdit.SubscriptionType" name="SubscriptionType">
+        </div>
+        <div class="form-group">
+            <label for="Age">Age</label>
+            <input id="Age" type="number" class="form-control" required [(ngModel)]="CustomerToEdit.Age" name="Age">
+        </div>
+        <button class="btn btn-primary">edit Customer</button>
+    </form>
+</div>
+<div class="container" *ngIf="booliCreate">
+    <form #trvForm="ngForm" (ngSubmit)="addSubmit()">
+        <div class="form-group">
+            <label for="Name">Name<span class="required">*</span></label>
+            <input id="Name" type="text" class="form-control" required [(ngModel)]="Name" name="Name">
+        </div>
+        <div class="form-group">
+            <label for="SubscriptionType">Subscription Type<span class="required">*</span></label>
+            <select id="SubscriptionType" type="text" class="form-control" required [(ngModel)]="SubscriptionType" name="SubscriptionType">
+            <option></option>
+            <option>Monthly</option>
+            <option>Pay as you go</option>
+            <option>Annual</option>
+            <option>Quarterly</option>
+            </select>
+            <br /><label for="SubscriptionType"></label>
+        </div>
+        <div class="form-group">
+            <label for="Age">Age<span class="required">*</span></label>
+            <input id="Age" type="number" class="form-control" required [(ngModel)]="Age" name="Age">
+        </div>
+        <button class="btn btn-primary">add Customer</button>
+    </form>
+</div>
+<!-- Container (Pricing Section) -->
+<div id="pricing" class="container-fluid">
+  <div class="text-center">
+    <h2>Pricing</h2>
+    <h4>Choose a payment plan that works for you</h4>
+  </div>
+  <div class="row slideanim">
+    <div class="col-sm-4 col-xs-12">
+      <div class="panel panel-default text-center">
+        <div class="panel-heading">
+          <h1>Basic</h1>
+        </div>
+        <div class="panel-body">
+          <p><strong>20</strong> Lorem</p>
+          <p><strong>15</strong> Ipsum</p>
+          <p><strong>5</strong> Dolor</p>
+          <p><strong>2</strong> Sit</p>
+          <p><strong>Endless</strong> Amet</p>
+        </div>
+        <div class="panel-footer">
+          <h3>$19</h3>
+          <h4>per month</h4>
+          <button class="btn btn-lg">Sign Up</button>
+        </div>
+      </div>      
+    </div>     
+    <div class="col-sm-4 col-xs-12">
+      <div class="panel panel-default text-center">
+        <div class="panel-heading">
+          <h1>Pro</h1>
+        </div>
+        <div class="panel-body">
+          <p><strong>50</strong> Lorem</p>
+          <p><strong>25</strong> Ipsum</p>
+          <p><strong>10</strong> Dolor</p>
+          <p><strong>5</strong> Sit</p>
+          <p><strong>Endless</strong> Amet</p>
+        </div>
+        <div class="panel-footer">
+          <h3>$29</h3>
+          <h4>per month</h4>
+          <button class="btn btn-lg">Sign Up</button>
+        </div>
+      </div>      
+    </div>       
+    <div class="col-sm-4 col-xs-12">
+      <div class="panel panel-default text-center">
+        <div class="panel-heading">
+          <h1>Premium</h1>
+        </div>
+        <div class="panel-body">
+          <p><strong>100</strong> Lorem</p>
+          <p><strong>50</strong> Ipsum</p>
+          <p><strong>25</strong> Dolor</p>
+          <p><strong>10</strong> Sit</p>
+          <p><strong>Endless</strong> Amet</p>
+        </div>
+        <div class="panel-footer">
+          <h3>$49</h3>
+          <h4>per month</h4>
+          <button class="btn btn-lg">Sign Up</button>
+        </div>
+      </div>      
+    </div>    
+  </div>
+</div>
+</body>
