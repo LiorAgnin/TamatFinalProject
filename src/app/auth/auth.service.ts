@@ -9,10 +9,10 @@ import { UserProfile } from './profile.model';
 export class AuthService {
 
   auth0 = new auth0.WebAuth({
-    clientID: 'rJT-pg3SSbQitZkrdFk4wuGbtc6eYWa8',
+    clientID: '<*********************>',
     domain: 'lioragnin.auth0.com',
     responseType: 'token id_token',
-    audience: 'https://lioragnin.auth0.com/userinfo',
+    audience: <*********************>,
     redirectUri: 'http://localhost:4201/',
     scope: 'openid profile'
   });
